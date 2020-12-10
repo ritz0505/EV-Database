@@ -1,0 +1,105 @@
+<html>
+<head>
+  <meta charset="utf-8">
+<h2 align="center" style="margin-top:10px">Welcome to the EV Database</h2>
+<meta charset="utf-8"/>
+<style>
+  table,th,td{
+  }
+
+  .searching{
+  }
+  th,td{
+    padding: 10px;
+    border:1x solid black;
+  }
+
+  th{
+    text-align:center;
+  }
+
+.background{
+  background-color: #B2BABB;
+}
+
+#compare {
+  font-family: Arial;
+  border-collapse: collapse;
+width:20%;
+}
+
+#compare td, #compare th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#compare tr:nth-child(even){
+  background-color: #138D75;
+  width:30%;}
+#compare tr:nth-child(odd){
+  background-color: #138D75;
+  width:30%;}
+
+#compare tr:hover {background-color: grey;}
+
+#compare th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: Grey;
+  color: white;
+}
+
+</style>
+<script>
+</script>
+</head>
+<body class="background">
+  <form class="infoForm">
+    <div align="center">
+      <table border="1" id="compare">
+        <tr>
+        <th>Name :</th>
+        <td>  {{ name }} </td><br/>
+        <input type="hidden"  name="name" id="name"  value="{{name}}"><br/>
+        </tr>
+        <tr>
+        <th>Manufacturer :</th>
+        <td> {{ manufacturer }}</td><br/>
+        <input type="hidden"  name="manufacturer" id="manufacturer"  value="{{manufacturer}}">
+        </tr>
+        <tr>
+        <th>Year : </th>
+        <td>{{ year }}</td><br/>
+        <input type="hidden"  name="year" id="year"  value="{{year}}">
+        </tr>
+        <tr>
+        <th>BatterySize : </th>
+        <td>{{ batterysize }}</td><br/>
+        <input type="hidden"  name="batterysize" id="batterysize"  value="{{batterysize}}">
+        </tr>
+        <tr>
+        <th>WLTPRange :</th>
+        <td>{{ wltprange }}</td><br/>
+        <input type="hidden"  name="wltprange" id="wltprange"  value="{{wltprange}}">
+        </tr>
+        <tr>
+        <th>Power : </th>
+        <td>{{ power }}</td><br/>
+        <input type="hidden"  name="power" id="power"  value="{{power}}">
+        </tr>
+        <tr>
+        <th>Cost : </th>
+        <td>{{ cost }}</td><br/>
+        <input type="hidden"  name="cost" id="cost"  value="{{cost}}">
+        </tr>
+        </table>
+        <br/>
+        <th><button><a href="/Checking?button=true&id=b1&name={{name}}&manufacturer={{manufacturer}}&year={{year}}&batterysize={{batterysize}}&wltprange={{wltprange}}&cost={{cost}}&power={{power}}">Details Update</a></button>
+        <th><button><a href="/RET?button=true">Back</a></button>
+        <th><button id="rev" value="rev" name="rev"><a href="/RevCheck?button=true&id=rev&name={{name}}"> Give Review</a></th>
+
+    </div>
+    </form>
+    </body>
+</html>

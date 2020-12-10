@@ -1,0 +1,61 @@
+<html>
+<head>
+  <meta charset="utf-8">
+<h2 align="center" style="margin-top:10px">All Submitted Reviews</h2>
+<meta charset="utf-8"/>
+<style>
+
+#review {
+  font-family: Arial;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#review td, #review th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#review tr:nth-child(even){background-color: lightgrey;}
+
+#review tr:hover {background-color: grey;}
+
+#review th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #138D75;
+  color: white;
+}
+
+.background{
+  background-color: #B2BABB;
+}
+</style>
+<script>
+</script>
+</head>
+<body class="background">
+  <form class="infoForm">
+    <div align="center">
+      <table border="1" id="review">
+        <tr>
+        <th>Email Id</th>
+        <th>Vehicle</th>
+        <th>Reviews</th>
+        <th>Score</th>
+        </tr>
+        {% for i in ab %}
+        <tr>
+          <td>{{i.email_address}}</td>
+          <td>{{i.name}}</td>
+          <td>{{i.review}}</td>
+          <td>{{i.score}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <br><br/>
+      <a href="/RET">Back</a>
+    </form>
+    </body>
+</html>

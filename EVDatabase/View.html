@@ -1,0 +1,83 @@
+<html>
+<head>
+  <meta charset="utf-8">
+<style>
+  .main{
+    background-color: #B2BABB;
+  }
+
+  .edit{
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .design{
+    border:2px solid grey;
+    padding-top: 10px;
+  }
+
+</style>
+
+<script>
+function goBack(){
+  window.history.back();
+}
+</script>
+</head>
+
+<body style="text-align:center;" class="main">
+<!--*************** Form to edit or delete the EV data starts***********************************-->
+<form action="/EditDelete" method="get" class="design">
+  <div align="center" class="edit">
+  <table>
+  <h2>Please Edit or Delete your EV Details here/....</h2>
+    <tr>
+        <th><label for="name">EV Name:</label></th>
+        <th><input type="text" name="namenew" id="namenew" placeholder="{{name}}" value="{{name}}" ></th>
+        <input type="hidden"  name="name" id="name"  value="{{name}}">
+    </tr>
+    <tr></tr>
+    <tr>
+      <th><label for="manufacturer">Manufacturer:</label></th>
+      <th><input type="text" name="manufacturernew" id="manufacturernew" placeholder="{{manufacturer}}" value="{{manufacturer}}"></th>
+      <input type="hidden"  name="manufacturer" id="manufacturer"  value="{{manufacturer}}">
+    </tr>
+    <tr>
+        <th><label for="year">Year:</label></th>
+        <th><input type="text" id ="yearnew" name="yearnew" placeholder="{{year}}" value="{{year}}" ></th>
+        <input type="hidden"  name="year" id="year"  value="{{year}}">
+    </tr>
+    <tr>
+        <th><label for="batterysize">Battery Size:</label></th>
+        <th><input type="text" id ="batterysizenew" name="batterysizenew" placeholder="{{batterysize}}" value="{{batterysize}}"></th>
+        <input type="hidden"  name="batterysize" id="batterysize"  value="{{batterysize}}">
+    </tr>
+    <tr>
+      <th><label for="wltprange">WLTP RANGE:</label></th>
+      <th><input type="text" id ="wltprangenew" name="wltprangenew" placeholder="{{wltprange}}" value="{{wltprange}}"></th>
+        <input type="hidden"  name="wltprange" id="wltprange"  value="{{wltprange}}">
+    </tr>
+    <tr>
+      <th><label for="cost">Cost:</label></th>
+      <th><input type="text" id ="costnew" name="costnew"  placeholder="{{cost}}" value="{{cost}}"></th>
+        <input type="hidden"  name="cost" id="cost"  value="{{cost}}">
+    </tr>
+    <tr>
+        <th><label for="power">Power:</label></th>
+        <th><input type="text" id ="powernew" name="powernew" placeholder="{{power}}" value="{{power}}"></th>
+        <input type="hidden"  name="power" id="power"  value="{{power}}">
+    </tr>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+    <th><button type="submit" name="Edit" value="Edit" id="Edit">Edit</button>
+    <button type="submit" name="Delete" value="Delete" id="Delete">Delete</button>
+    <button type="submit" name="Cancel" value="Cancel" id="Cancel" formaction="/RET">Cancel</button></th>
+  </table>
+  </div>
+</form>
+<!--*************** Form to edit or delete the EV data ends***********************************-->
+</body>
+</html>

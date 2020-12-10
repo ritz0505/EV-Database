@@ -1,0 +1,60 @@
+<html>
+<head>
+  <h2 align="center">Compare data here</h2>
+<meta charset="utf-8">
+<script>
+  function check(cb) {
+    var inputElems = document.getElementsByName("compId"),
+    count = 0;
+    for (i=0; i<inputElems.length; i++) {
+       if (inputElems[i].type == "checkbox" && inputElems[i].checked == true){
+          count++;
+       }
+    }
+
+    if(count<2)
+    {
+      alert("Atleast 2 data should be selected for the comparision");
+      return false;
+    }
+  }
+</script>
+<style>
+  #search th {
+    padding-top: 30px;
+    padding-bottom: 12px;
+  }
+
+  .form2{
+
+  }
+</style>
+</head>
+<body style="background-color:#B2BABB">
+<div>
+<table id="search" align="center" class="form2">
+    <tr>
+      <th></th>
+      <th>Vehicle Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr></tr>
+
+  <form action="/Compare" >
+      <ul>
+        {% for item in result %}
+        <tr><td><input type="checkbox" name="compId" id="compId" value="{{item.name}}{{item.manufacturer}}{{item.year}}">
+        <td>{{ item.name }}</td>
+        </tr>
+        {% endfor %}
+      </ul>
+      <th><input type="submit" name="submit" value="Go" id="Go" onclick="return check();" formaction="/Compare">
+      <input type="submit" name="button" value="Back" id="Back" formaction="/RET"></th>
+</form>
+
+
+
+</table>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+function myFun(){
+  var yearvalue = document.getElementById("year").value;
+  var battervalue=document.getElementById("batterysize").value;
+  var wltprange=document.getElementById("wltprange").value;
+  var costvalue=document.getElementById("cost").value;
+  var powervalue=document.getElementById("power").value;
+  if(yearvalue < 0)
+  {
+      alert("Negative value not allowed for Year");
+      return false;
+  }
+  if(battervalue<0)
+  {
+    alert("Negative value not allowed for BatterySize");
+      return false;
+  }
+  if(wltprange<0)
+  {
+    alert("Negative value not allowed for WLTPrange");
+      return false;
+  }3
+  if(costvalue<0)
+  {
+    alert("Negative value not allowed for Cost");
+      return false;
+  }
+  if(powervalue<0)
+  {
+    alert("Negative value not allowed for Power");
+      return false;
+  }
+
+}
+function checkSpcialChar(event){
+           if(!((event.keyCode >= 65) && (event.keyCode <= 90) || (event.keyCode >= 97) && (event.keyCode <= 122) || (event.keyCode >= 48) && (event.keyCode <= 57))){
+              event.returnValue = false;
+              return;
+           }
+           event.returnValue = true;
+        }
+</script>
+<style>
+    table,th,td{
+    }
+
+    .searching{
+    }
+    th,td{
+      padding: 5px;
+    }
+
+    th{
+      text-align:center;
+    }
+
+    .tab2{
+      align-self: center;
+    }
+
+    .head2{
+      margin-right:15px;
+    }
+
+    .searchfrom{
+      border: 1px solid black;
+    }
+
+    .background{
+      background-color: #B2BABB;
+    }
+
+    .addform{
+        border: 1px solid black;
+    }
+</style>
+</head>
+
+<body style="text-align:center;" class="background">
+<!--*************** 1st form to add the details in the datastore starts***********************************-->
+<form name="myForm" action="/ADDEV" class="addform">
+  <div class="container" >
+  <table style="width:50%">
+  <h2>Add the EV Details Here</h2>
+      <tr>
+          <th><label for="name">EV Name:</label></th>
+          <th><input type="text" id ="name" name="name" placeholder="Name" onkeypress="return checkSpcialChar(event)" required></th>
+          <th><label for="manufacturer">Manufacturer:</label></th>
+          <th><input type="text" id ="manufacturer" name="manufacturer" placeholder="Manufacturer" onkeypress="return checkSpcialChar(event)" required></th>
+      </tr>
+      <tr>
+          <th><label for="year">Year:</label></th>
+          <th><input type="text" id ="year" name="year"  placeholder="Year"  oninput="val();" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)" required></th>
+          <th><label for="batterysize">Battery Size:</label></th>
+          <th><input type="text" id ="batterysize" name="batterysize" placeholder="Batterysize" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)" required></th>
+      </tr>
+      <tr>
+        <th><label for="wltprange">WLTP RANGE:</label></th>
+        <th><input type="text" id ="wltprange" name="wltprange" placeholder="WLTPRange" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)" required></th>
+        <th><label for="cost">Cost:</label></th>
+        <th><input type="text" id ="cost" name="cost" placeholder="Cost" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)" required></th>
+      </tr>
+      <tr>
+          <th><label for="power">Power:</label></th>
+          <th><input type="text" id ="power" name="power" placeholder="Power" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)" required></th>
+      </tr>
+      <th><input type="submit" name="submit" value="submit" onclick="return myFun();">
+      <button type="reset" value="Reset">Reset</button></th>
+  </table>
+  </div>
+</form>
+
+<!--*************** 1st form to add the details in the datastore ends here***********************************-->
+</body>
+</html>

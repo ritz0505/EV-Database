@@ -1,0 +1,97 @@
+<html>
+<head>
+<h2 align="center">Data Comparision</h2>
+<meta charset="utf-8"/>
+   <style>
+      table, th, td {
+  border: 1px solid black;
+
+}
+th, td {
+ padding:1em;
+}
+span{
+color:blue;
+}
+
+.comparepage{
+
+}
+#compare {
+  font-family: Arial;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#compare td, #compare th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#compare tr:nth-child(even){background-color: lightgrey;}
+
+#compare tr:hover {background-color: grey;}
+
+#compare th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #138D75;
+  color: white;
+}
+
+</style>
+</head>
+<body style="background-color:#B2BABB">
+<div class="comparepage"  style="text-align:center" >
+  <form>
+<table align="center" id="compare">
+
+   <tr>
+      <th colspan="2"> Name </th>
+      <th colspan="2">Manufacturer</th>
+      <th colspan="2">year</th>
+      <th colspan="2">batterysize</th>
+      <th colspan="2">wltprange</th>
+      <th colspan="2">cost</th>
+      <th colspan="2">power</th>
+   </tr>
+
+  {% for i in result %}
+   <tr>
+      <td colspan="2"><a href="/InfoClass?name={{i.name}}&manufacturer={{i.manufacturer}}&year={{i.year}}&batterysize={{i.batterysize}}&wltprange={{i.wltprange}}&cost={{i.cost}}&power={{i.power}}">{{i.name}}</a></td>
+      <td colspan="2">{{i.manufacturer}}</td>
+      <td colspan="2">{{i.year}}</td>
+      {% if compbatterysize == i.key.id %}
+      <td colspan="2" style="background-color:#229954 ;" >{{i.batterysize}}</td>
+      {% else %}
+      <td colspan="2" style="background-color:#EC7063;" >{{i.batterysize}}</td>
+      {% endif %}
+      {% if compwltprange == i.key.id %}
+      <td colspan="2" style="background-color:#229954 ;" >{{i.wltprange}}</td>
+      {% else %}
+      <td colspan="2" style="background-color:#EC7063;" >{{i.wltprange}}</td>
+      {% endif %}
+      {% if compcost == i.key.id %}
+        <td colspan="2" style="background-color:#EC7063;">{{i.cost}}</td>
+      {% else %}
+        <td colspan="2" style="background-color:#229954 ;">{{i.cost}}</td>
+      {% endif %}
+      {% if comppower == i.key.id %}
+        <td colspan="2" style="background-color:#229954 ;">{{i.power}}</td>
+      {% else %}
+        <td colspan="2" style="background-color:#EC7063;">{{i.power}}</td>
+      {% endif %}
+
+
+   </tr>
+{% endfor %}
+
+</table>
+<br></br>
+<a href="/ShowCompare">Back</a>
+</form>
+</div>
+
+</body>
+</html>

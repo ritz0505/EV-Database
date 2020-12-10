@@ -1,0 +1,155 @@
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+function check(cb) {
+  var inputElems = document.getElementsByName("compId"),
+  count = 0;
+  for (i=0; i<inputElems.length; i++) {
+     if (inputElems[i].type == "checkbox" && inputElems[i].checked == true){
+        count++;
+     }
+  }
+
+  if(count<2)
+  {
+    alert("Atleast 2 data should be selected for the comparision");
+    return false;
+  }
+}
+
+function checkSpcialChar(event){
+           if(!((event.keyCode >= 65) && (event.keyCode <= 90) || (event.keyCode >= 97) && (event.keyCode <= 122) || (event.keyCode >= 48) && (event.keyCode <= 57))){
+              event.returnValue = false;
+              return;
+           }
+           event.returnValue = true;
+        }
+
+</script>
+<style>
+
+
+    table,th,td{
+    }
+
+    .searching{
+    }
+    th,td{
+      padding: 5px;
+    }
+
+    th{
+      text-align:center;
+    }
+
+    function myFunction{
+      location.replace("View.html")
+    }
+
+    .tab2{
+      align-self: center;
+    }
+
+    .head2{
+      margin-right:15px;
+    }
+
+    .searchfrom{
+      border: 1px solid black;
+    }
+
+    .background{
+      background-color: #B2BABB ;
+    }
+
+    .addform{
+        border: 1px solid black;
+    }
+</style>
+
+<body style="text-align:center;" class="background">
+  <!--********************2nd form for searching starts****************************-->
+  <form name="myForm" action="/RET" class="searchfrom" method="get" id="myForm" >
+    <div id="popup1" class="overlay">
+
+    <div >
+    <h2>Search your EV details here</h2>
+    <table>
+        <tr>
+            <th><label for="name">EV Name:</label></th>
+            <th><input type="text" id ="name1" name="name1" placeholder="Name" pattern="[^0-9]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)"></th>
+            <th><label for="manufacturer">Manufacturer:</label></th>
+            <th><input type="text" id ="manufacturer1" name="manufacturer1" placeholder="Manufacturer" pattern="[^0-9]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)"></th>
+        </tr>
+        <tr>
+            <th><label for="year">Year: Minimum</label></th>
+            <th><input type="text" id ="yearmin1" name="yearmin1" placeholder="From Year" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)"></th>
+            <th><label for="year">Maximum</label></th>
+            <th><input type="text" id ="yearmax1" name="yearmax1" placeholder="To year" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)"></th>
+        </tr>
+        <tr>
+            <th><label for="batterysize">Battery Size: Minimum</label></th>
+            <th><input type="text" id ="batterysizemin1" name="batterysizemin1" placeholder="From BatterySize" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)"></th>
+            <th><label for="batterysize">Maximum</label></th>
+            <th><input type="text" id ="batterysizemax1" name="batterysizemax1" placeholder="To BatterySize" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)"></th>
+        </tr>
+        <tr>
+          <th><label for="wltprange">WLTP RANGE: Mininmum</label></th>
+          <th><input type="text" id ="wltprangemin1" name="wltprangemin1" placeholder="From WLTPRange" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)"></th>
+          <th><label for="wltprange">Maximum</label></th>
+          <th><input type="text" id ="wltprangemax1" name="wltprangemax1" placeholder="To WLTPRange" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)"></th>
+        </tr>
+        <tr>
+            <th><label for="cost">Cost: Minimum</label></th>
+            <th><input type="text" id ="costmin1" name="costmin1" placeholder="From Cost" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)"></th>
+            <th><label for="cost">Maximum</label></th>
+            <th><input type="text" id ="costmax1" name="costmax1" placeholder="To Cost" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)"></th>
+        </tr>
+        <tr>
+            <th><label for="power">Power: Minimum</label></th>
+            <th><input type="text" id ="powermin1" name="powermin1" placeholder="From Power" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)"></th>
+            <th><label for="power">Maximum</label></th>
+            <th><input type="text" id ="powermax1" name="powermax1" placeholder="To Power" pattern="[^a-zA-Z]+" pattern="[^-,]+" onkeypress="return checkSpcialChar(event)"></th>
+        </tr>
+        <th>
+          <button id="button" name="button" value="search" onclick="return myFun();">search</button>
+        <button type="cancel" name="Cancel" value="Cancel" formaction="/RET">Cancel</button>
+        <button type="cancel" name="Compare" value="Compare" formaction="/ShowCompare">Compare</button>
+        <input type="submit" name="Review" value="Review" formaction="/AllReviewClass"></th>
+  </table>
+</div>
+  <br><br>
+  <div>
+  <table id="sear">
+
+      <tr>
+        <th>Name</th>
+
+        <th></th>
+        <th></th>
+      </tr>
+    </form>
+    <form >
+        <ul>
+          {% for item in result %}
+          <tr><td>{{ item.name }}</td>
+          <td><button type="submit" id="viewButton" name="viewButton" formaction="/InfoClass">
+          <a href="/InfoClass?button=true&id=viewButton&name={{item.name}}&manufacturer={{item.manufacturer}}&year={{item.year}}&batterysize={{item.batterysize}}&wltprange={{item.wltprange}}&cost={{item.cost}}&power={{item.power}}">View</a></button></td>
+          <td></td>
+
+          </tr>
+
+          {% endfor %}
+        </ul>
+
+</form>
+
+  </table>
+
+</div >
+</form>
+
+<!--********************2nd form for searching ends here****************************-->
+</body>
+</html>
